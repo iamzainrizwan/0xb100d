@@ -67,7 +67,7 @@ int main() {
     int client_fd = accept(s, (struct sockaddr *)&their_addr, &addr_size);
     if (client_fd == -1) {
       perror("accept");
-      return 1;
+      continue;
     }
 
     bool ohShitMyWriteFailed = false;
