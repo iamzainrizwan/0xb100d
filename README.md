@@ -2,6 +2,21 @@
 
 a redis-compatible in-memory key-value server in c++, benchmarked against real redis.
 
+## bulid 
+
+project builds with cmake:
+
+```bash
+#configure cmake (once when you clone)
+cmake -S . -B build
+#build it (redo every code edit)
+cmake --build build
+```
+then, run the binary in `./build` with `./build/server`
+
+as of right now, server listens on port `6380`
+to talk to it, open a new terminal and `nc localhost 6380`
+
 ## goals
 
 - speak resp2, so `redis-cli` and `redis-benchmark` work against it unchanged
