@@ -38,6 +38,7 @@ int main() {
     perror("bind");
     return 1;
   }
+  freeaddrinfo(res); // we dont need it anymore
   if (listen(s, 24) < 0) {
     perror("listen");
     return 1;
@@ -84,7 +85,7 @@ int main() {
         break;
       }
       // send their data
-      int sent = 0;
+      ssize_t sent = 0;
       while (sent < n) {
         ssize_t w = write(client_fd, buf + sent, n - sent);
         if (w < 0) {
