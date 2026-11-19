@@ -4,17 +4,19 @@ a redis-compatible in-memory key-value server in c++, benchmarked against real r
 
 ## requirements
 
-CMake >= 3.20, any C++ 20 compiler (i use `g++ 13`)
+CMake >= 3.20, g++ or clang++ for C++20
 > hey! don't i need to install gtest?
 no! CMake downloads it for us :p
 
-## build
+## build/debug
 
 project builds with cmake:
 
 ```bash
 #configure cmake (once when you clone)
 cmake -S . -B build
+#if you're debugging:
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
 #build it (redo every code edit)
 cmake --build build
 #test it
@@ -24,6 +26,9 @@ then, run the binary in `./build` with `./build/server`
 
 as of right now, server listens on port `6380`
 to talk to it, open a new terminal and `nc localhost 6380`
+
+debug catches out-of-bounds, use-after-free, leaks, and undefined 
+behaviour
 
 ## goals
 

@@ -18,5 +18,11 @@ add_executable(server src/main.cpp)
 add_executable(tests tests/main.cpp)
 
 target_link_libraries(tests GTest::gtest_main)
+
+foreach(t server tests)
+  target_compile_options(${t} PRIVATE $<$<CONFIG:Debug>:-fsanitize=address,undefined -fno-omit-frame-pointer>)
+  target_link_options(${t}    PRIVATE $<$<CONFIG:Debug>:-fsanitize=address,undefined>)
+endforeach()
+
 include(GoogleTest)
 gtest_discover_tests(tests)
