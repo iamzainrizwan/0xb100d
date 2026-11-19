@@ -2,7 +2,13 @@
 
 a redis-compatible in-memory key-value server in c++, benchmarked against real redis.
 
-## bulid 
+## requirements
+
+CMake >= 3.20, any C++ 20 compiler (i use `g++ 13`)
+> hey! don't i need to install gtest?
+no! CMake downloads it for us :p
+
+## build
 
 project builds with cmake:
 
@@ -11,6 +17,8 @@ project builds with cmake:
 cmake -S . -B build
 #build it (redo every code edit)
 cmake --build build
+#test it
+ctest --test-dir build
 ```
 then, run the binary in `./build` with `./build/server`
 

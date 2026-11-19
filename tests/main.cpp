@@ -1,1 +1,3 @@
-int main(int argc, char *argv[]) { return 0; }
+#include <gtest/gtest.h>
+
+TEST(Sanity, Works) { EXPECT_EQ(1 + 1, 2); }
